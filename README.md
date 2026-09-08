@@ -100,18 +100,21 @@ Pilih 5?
 ## 6. Penerapan Nilai Tambah                 
 1. Access modifier — Seluruh atribut pada Pengaduan dan PengelolaPengaduan (termasuk daftarPengaduan) bersifat `private`, hanya bisa diakses lewat method public `(getter/setter/method CRUD)`.
 
-   <img width="233" height="98" alt="Screenshot 2026-09-08 172329" src="https://github.com/user-attachments/assets/091aaceb-0b6b-4807-8dca-9d139c046993" />                                                                        
+   <img width="233" height="98" alt="Screenshot 2026-09-08 172329" src="https://github.com/user-attachments/assets/091aaceb-0b6b-4807-8dca-9d139c046993" />
+                                                             
    Penerapan Access Modifier pada Class Pengaduan                                                              
    Atribut pada class Pengaduan menggunakan access modifier `private`, sedangkan method yang digunakan untuk mengakses data menggunakan `public`.                                                    
                                           
-2. Encapsulation — Data pada Pengaduan disembunyikan dan hanya bisa dibaca lewat `getter`; atribut idPengaduan sengaja tidak diberi `setter` karena dibuat otomatis oleh sistem dan berfungsi sebagai identitas data yang tidak boleh berubah.
+3. Encapsulation — Data pada Pengaduan disembunyikan dan hanya bisa dibaca lewat `getter`; atribut idPengaduan sengaja tidak diberi `setter` karena dibuat otomatis oleh sistem dan berfungsi sebagai identitas data yang tidak boleh berubah.
 
-   <img width="230" height="62" alt="Screenshot 2026-09-08 173521" src="https://github.com/user-attachments/assets/ddae2c8e-8b7b-402b-9c88-6fb815ed8798" />                             
-   <img width="241" height="65" alt="Screenshot 2026-09-08 173641" src="https://github.com/user-attachments/assets/b207c8a0-7a8d-460e-a93f-e9eba4ecfdc7" />                                                                       
+   <img width="230" height="62" alt="Screenshot 2026-09-08 173521" src="https://github.com/user-attachments/assets/ddae2c8e-8b7b-402b-9c88-6fb815ed8798" />
+                      
+   <img width="241" height="65" alt="Screenshot 2026-09-08 173641" src="https://github.com/user-attachments/assets/b207c8a0-7a8d-460e-a93f-e9eba4ecfdc7" />
+                                                                     
    Penerapan Encapsulation pada Class Pengaduan                                                           
    Data pengaduan disembunyikan menggunakan atribut private dan diakses melalui `getter`. Perubahan data dilakukan melalui `setter` sesuai kebutuhan. Atribut idPengaduan tidak memiliki setter karena digunakan sebagai identitas tetap pengaduan.                                                  
 
-3. Validasi input — Ditangani khusus oleh `class ValidasiInput`: menolak input teks kosong (inputTidakKosong), memastikan pilihan menu berupa angka 1–5 (inputMenu), membatasi pilihan status hanya 1–3 (inputStatus), memvalidasi jawaban konfirmasi hapus data agar hanya y/n (inputKonfirmasi), serta pilihan jenis pengaduan yang dibatasi pada kategori 1–5 di Main.                                  
+4. Validasi input — Ditangani khusus oleh `class ValidasiInput`: menolak input teks kosong (inputTidakKosong), memastikan pilihan menu berupa angka 1–5 (inputMenu), membatasi pilihan status hanya 1–3 (inputStatus), memvalidasi jawaban konfirmasi hapus data agar hanya y/n (inputKonfirmasi), serta pilihan jenis pengaduan yang dibatasi pada kategori 1–5 di Main.                                  
       <img width="424" height="220" alt="Screenshot 2026-09-08 174132" src="https://github.com/user-attachments/assets/ff206f29-fbf8-4ecc-9deb-d1ebdbea801a" />                                                                       
 Penerapan Validasi Input pada Class ValidasiInput                                        
 Class ValidasiInput digunakan untuk memastikan input pengguna sesuai aturan program, seperti mencegah input kosong, membatasi pilihan menu dan status, serta menangani input yang bukan angka.                                                 
