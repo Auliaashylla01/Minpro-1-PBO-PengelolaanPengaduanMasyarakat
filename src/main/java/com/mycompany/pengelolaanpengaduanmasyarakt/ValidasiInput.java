@@ -8,8 +8,9 @@ import java.util.Scanner;
  *
  * @author ASUS
  */
+//Class ValidasiInput digunakan untuk method untuk memvalidasi input user agar mencegah error program.
 public class ValidasiInput {
-     // Input String yang tidak boleh kosong
+     //Memastikan input teks dari user tidak kosong/spasi saja.
     public static String inputTidakKosong(Scanner scanner, String pesan) {
 
         String input;
@@ -17,40 +18,39 @@ public class ValidasiInput {
         while (true) {
 
             System.out.print(pesan);
-            input = scanner.nextLine().trim();
+            input = scanner.nextLine().trim(); //trim()untuk menghapus spasi di awal/akhir
 
             if (!input.isEmpty()) {
                 return input;
             }
 
-            System.out.println("Input tidak boleh kosong.");
+            System.out.println("[Error] Input tidak boleh kosong! Silakan isi data dengan benar.");
         }
     }
-// Input pilihan menu
+    //Input Untuk pilihan menu Sistem
     public static int inputMenu(Scanner scanner) {
 
         while (true) {
-
             System.out.print("Pilih menu: ");
-            String input = scanner.nextLine();
 
-            try {
-
-                int menu = Integer.parseInt(input);
+            //Cek apakah inputan user benar-benar berupa angka
+            if (scanner.hasNextInt()) {
+                int menu = scanner.nextInt();
+                scanner.nextLine();
 
                 if (menu >= 1 && menu <= 5) {
-                    return menu;
+                    return menu; //Kembali ke menu jika angka 1 - 5
+                } else {
+                    System.out.println("[Error] Pilihan menu hanya dari 1 sampai 5!");
                 }
-
-                System.out.println("Menu hanya dapat dipilih dari 1 sampai 5.");
-                 } catch (NumberFormatException e) {
-
-                System.out.println("Input harus berupa angka.");
+            } else {
+                System.out.println("[Error] Input harus berupa angka!");
+                scanner.nextLine();
             }
         }
     }
-            // Input pilihan status
-           public static int inputStatus(Scanner scanner) {
+        //Memastikan input pilihan status bernilai angka antara 1 sampai 3.
+        public static int inputStatus(Scanner scanner) {
 
         while (true) {
 
@@ -65,21 +65,20 @@ public class ValidasiInput {
                     return status;
                 }
 
-                System.out.println("Pilihan status hanya 1 sampai 3.");
+                System.out.println("[Error] Pilihan status hanya angka 1 sampai 3!");
 
             } catch (NumberFormatException e) {
 
-                System.out.println("Input harus berupa angka.");
+                System.out.println("[Error] Input harus berupa angka!");
          
            }
         }
-           }
-        // Input konfirmasi
+        }
+        // Input Untuk konfirmasi
         public static boolean inputKonfirmasi(Scanner scanner) {
 
         while (true) {
 
-            System.out.print("Masukkan y untuk ya atau n untuk tidak: ");
             String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase("y")) {
@@ -90,8 +89,8 @@ public class ValidasiInput {
                 return false;
             }
 
-            System.out.println("Input hanya boleh y atau n.");
+            System.out.println("[Error] Input hanya boleh berupa huruf 'y' (ya) atau 'n' (tidak)!");
         }
     }
-    }
+   }
 

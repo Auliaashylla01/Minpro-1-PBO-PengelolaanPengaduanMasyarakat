@@ -8,6 +8,7 @@ import java.util.Scanner;
  *
  * @author ASUS
  */
+//Class Main (Utama)untuk mengatur jalannya alur menu
 public class PengelolaanPengaduanMasyarakt {
 
     public static void main(String[] args) {
@@ -23,17 +24,18 @@ public class PengelolaanPengaduanMasyarakt {
             tampilkanMenu();
 
             menu = ValidasiInput.inputMenu(scanner);
-
+            //Menjalankan fitur sesuai menu yang dipilih
             switch (menu) {
             case 1 -> tambahPengaduan(scanner, pengelola);
             case 2 -> pengelola.lihatPengaduan();
             case 3 -> ubahStatus(scanner, pengelola);
             case 4 -> hapusPengaduan(scanner, pengelola);
-            case 5 -> System.out.println("\nTerima kasih telah menggunakan sistem.");
-            default -> System.out.println("\nMenu tidak tersedia.");
+            case 5 -> System.out.println("\nTerima kasih telah menggunakan Sistem Pengelolaan Pengaduan Masyarakat.");
+            default -> System.out.println("\n[Error] Menu tidak tersedia. Silakan pilih angka 1-5!");
 }
+            //Jeda di menu agar output tidak langsung hilang
             if (menu != 5) {
-                System.out.println("\nTekan ENTER untuk kembali ke menu...");
+                System.out.println("\nTekan [ENTER] untuk kembali ke menu...");
                 scanner.nextLine();
             }
 
@@ -44,6 +46,7 @@ public class PengelolaanPengaduanMasyarakt {
     // Header
     public static void tampilkanHeader() {
 
+        //Method untuk mencetak header aplikasi
         System.out.println("\n==================================================");
         System.out.println("      SISTEM PENGELOLAAN PENGADUAN MASYARAKAT");
         System.out.println("==================================================");
@@ -51,7 +54,7 @@ public class PengelolaanPengaduanMasyarakt {
 
     // Menu utama
     public static void tampilkanMenu() {
-
+        //Method untuk mencetak daftar menu utama
         System.out.println("1. Tambah Pengaduan");
         System.out.println("2. Lihat Pengaduan");
         System.out.println("3. Ubah Status Pengaduan");
@@ -130,7 +133,7 @@ public class PengelolaanPengaduanMasyarakt {
 
         String tanggal = ValidasiInput.inputTidakKosong(
                 scanner,
-                "Masukkan Tanggal         : ");
+                "Masukkan Tanggal(dd/mm/yyyy) : ");
         
          Pengaduan pengaduan = new Pengaduan(
                 id,
@@ -142,8 +145,8 @@ public class PengelolaanPengaduanMasyarakt {
 
         pengelola.tambahPengaduan(pengaduan);
 
-        System.out.println("\nPengaduan berhasil ditambahkan.");
-        System.out.println("Status awal: Menunggu");
+        System.out.println("\n[Sukses] Pengaduan berhasil ditambahkan ke dalam sistem!");
+        System.out.println("Status awal : Pengaduan Kamu sedang Menunggu Konfirmasi...");
     }
      // Menu 3
     public static void ubahStatus(
@@ -162,11 +165,11 @@ public class PengelolaanPengaduanMasyarakt {
 
         if (pengaduan == null) {
 
-            System.out.println("Pengaduan tidak ditemukan.");
+            System.out.println("\n[Error] ID Pengaduan tidak ditemukan! Silakan periksa kembali ID yang dimasukkan.");
             return;
         }
-         System.out.println("\nData ditemukan.");
-        System.out.println("Pelapor : " + pengaduan.getNamaPelapor());
+         System.out.println("\n[Informasi Data]");
+        System.out.println("Pelapor         : " + pengaduan.getNamaPelapor());
         System.out.println("Status saat ini : " + pengaduan.getStatus());
 
         System.out.println("\nPilih Status Baru:");
@@ -182,25 +185,23 @@ public class PengelolaanPengaduanMasyarakt {
         switch (pilihanStatus) {
 
             case 1:
-                statusBaru = "Menunggu";
+                statusBaru = "Pengaduan Kamu sedang Menunggu Konfirmasi...";
                 break;
             case 2:
-                statusBaru = "Diproses";
+                statusBaru = "Pengaduan Kamu sedang Diproses...";
                 break;
 
             case 3:
-                statusBaru = "Selesai";
+                statusBaru = "Pengaduan Kamu telah Selesai Ditindaklanjuti";
                 break;
 
             default:
-                statusBaru = "Menunggu";
+                statusBaru = "Pengaduan Kamu sedang Menunggu Konfirmasi...";
         }
         pengelola.ubahStatus(id, statusBaru);
 
-        System.out.println(
-                "Status berhasil diubah menjadi "
-                + statusBaru + "."
-        );
+        System.out.println("\n[Sukses] Status pengaduan berhasil diperbarui!");
+        System.out.println("Status Baru: " + statusBaru);
     }
     public static void hapusPengaduan(
             Scanner scanner,
@@ -218,7 +219,7 @@ public class PengelolaanPengaduanMasyarakt {
 
         if (pengaduan == null) {
 
-            System.out.println("Pengaduan tidak ditemukan.");
+            System.out.println("\n[Error] ID Pengaduan tidak ditemukan! Silakan periksa kembali ID Anda.");
             return;
         }
         System.out.println("\nData ditemukan:");
@@ -226,7 +227,7 @@ public class PengelolaanPengaduanMasyarakt {
         System.out.println("Pelapor : " + pengaduan.getNamaPelapor());
         System.out.println("Jenis   : " + pengaduan.getJenisPengaduan());
 
-        System.out.print("\nYakin ingin menghapus data ini? ");
+        System.out.print("\nApakah Kamu yakin ingin menghapus pengaduan ini? (y/n): ");
 
         boolean konfirmasi =
                 ValidasiInput.inputKonfirmasi(scanner);
@@ -235,11 +236,11 @@ public class PengelolaanPengaduanMasyarakt {
 
             pengelola.hapusPengaduan(id);
 
-            System.out.println("Pengaduan berhasil dihapus.");
+            System.out.println("\n[Sukses] Data pengaduan berhasil dihapus dari sistem.");
 
         } else {
 
-            System.out.println("Penghapusan dibatalkan.");
+            System.out.println("\n[Batal] Proses penghapusan data pengaduan dibatalkan.");
         }
     }
 }
