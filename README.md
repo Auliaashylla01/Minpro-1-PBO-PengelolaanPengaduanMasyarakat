@@ -1,5 +1,7 @@
 # Sistem Pengelolaan Pengaduan Masyarakat
 
+Oleh Aulia Ashylla Ananda Putri Hariawan (2509116076)
+
 ## 1. Deskripsi Singkat Program
 
 Sistem Pengelolaan Pengaduan Masyarakatmerupakan program berbasis Java yang digunakan untuk mencatat dan mengelola data pengaduan yang disampaikan oleh masyarakat. Program ini dapat digunakan untuk menangani berbagai laporan, seperti kerusakan fasilitas umum, masalah kebersihan, keamanan, jalan, maupun pelayanan. Setiap data pengaduan memiliki beberapa informasi, yaitu ID Pengaduan, Nama Pelapor, Jenis Pengaduan, Isi Pengaduan, Tanggal Pengaduan, dan Status Pengaduan. ID pengaduan dibuat secara otomatis oleh sistem, jenis pengaduan juga dipilih melalui kategori yang telah disediakan agar data yang tersimpan lebih konsisten. Pengguna dapat mengelola data melalui menu interaktif yang terdiri dari Tambah Pengaduan, Lihat Pengaduan, Ubah Status Pengaduan, Hapus Pengaduan, dan Keluar. Program dibuat dengan konsep `Object-Oriented Programming (OOP)` dan menggunakan `ArrayList` sebagai media penyimpanan data selama program berjalan.
